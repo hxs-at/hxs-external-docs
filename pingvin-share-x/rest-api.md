@@ -18,6 +18,26 @@ It focuses on the main API flows needed to:
 
 This is not a full upstream API reference. This document describes the API behavior verified on the HXS-hosted Pingvin Share instance. It may differ from future upstream versions.
 
+## Test script
+
+A PowerShell test script for the workflows documented on this page is available here:
+
+- [Test-PingvinShareApi.ps1](./scripts/Test-PingvinShareApi.ps1)
+
+The script tests the main documented flows, including authentication, share creation, file upload, completion, share tokens, downloads, password-protected shares, metadata updates, share reopening, expiration, deletion, and optional recipient email triggering.
+
+Example:
+
+```powershell
+.\Test-PingvinShareApi.ps1 `
+  -BaseUrl "https://files.example.com" `
+  -Username "apiuser" `
+  -Password "your-password" `
+  -RecipientEmail "recipient@example.com"
+```
+
+Use a dedicated test account and test recipient when running the script.
+
 ## Base URL and authentication
 
 Most write operations require an authenticated session. Pingvin Share X uses **cookie-based authentication**:
