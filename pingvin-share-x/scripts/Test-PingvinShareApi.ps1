@@ -763,7 +763,7 @@ try {
             -ExpectedStatus @(200, 201, 202, 204))
     }
 
-    Invoke-TestStep "Upload another file after reopening share" {
+    Invoke-TestStep "Upload replacement file after reopening share" {
         $url = New-UploadUrl `
             -ShareId $basicShareId `
             -FileId $basicFileId2 `
@@ -778,6 +778,20 @@ try {
             -BodyBytes $basicFileBytes2 `
             -ContentType "application/octet-stream" `
             -ExpectedStatus @(200, 201, 202, 204))
+
+        Write-Host "Uploaded replacement file ID: $basicFileId2"
+    }
+
+    Invoke-TestStep "Delete old file from reopened basic share" {
+        $url = Join-ApiUrl -Base $script:BaseUrl -Path "/api/shares/$basicShareId/files/$basicFileId1"
+
+        [void](Invoke-PingvinRequest `
+            -Method DELETE `
+            -Url $url `
+            -Session $script:AuthSession `
+            -ExpectedStatus @(200, 201, 202, 204))
+
+        Write-Host "Deleted old file ID from reopened share: $basicFileId1"
     }
 
     Invoke-TestStep "Complete reopened basic share again" {
@@ -788,6 +802,22 @@ try {
             -Url $url `
             -Session $script:AuthSession `
             -ExpectedStatus @(202))
+    }
+
+    Invoke-TestStep "Get owner view after completing replaced-file share" {
+        $url = Join-ApiUrl -Base $script:BaseUrl -Path "/api/shares/$basicShareId/from-owner"
+
+        $response = Invoke-PingvinRequest `
+            -Method GET `
+            -Url $url `
+            -Session $script:AuthSession `
+            -ExpectedStatus @(200)
+
+        if (-not $response.Content) {
+            throw "Owner view after completing replaced-file share returned empty response."
+        }
+
+        Write-Host "Owner view after completing replaced-file share response length: $($response.Content.Length)"
     }
 
     # -----------------------------

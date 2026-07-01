@@ -2,7 +2,7 @@
 
 Tested with Pingvin Share version: 1.13.0
 
-Last verified: 2026-06-30
+Last verified: 2026-07-01
 
 ## Purpose
 
@@ -24,7 +24,7 @@ A PowerShell test script for the workflows documented on this page is available 
 
 - [Test-PingvinShareApi.ps1](./scripts/Test-PingvinShareApi.ps1)
 
-The script tests the main documented flows, including authentication, share creation, file upload, completion, share tokens, downloads, password-protected shares, metadata updates, share reopening, expiration, deletion, and optional recipient email triggering.
+The script tests the main documented flows, including authentication, share creation, file upload, completion, share tokens, downloads, password-protected shares, metadata updates, share reopening, deleting files from reopened shares, expiration, share deletion, and optional recipient email triggering.
 
 Example:
 
@@ -80,8 +80,6 @@ Use one of these relative formats:
 - `never`
 
 The format is `<number>-<unit>`, for example `14-days`. Common units are `minutes`, `hours`, `days`, `weeks`, `months`, and `years`.
-
-Do not use human-readable strings such as `7 days`.
 
 ## Common automation flow
 
@@ -215,7 +213,7 @@ Example for a one-chunk upload:
 
 ```bash
 curl -b cookies.txt -X POST \
-  "https://files.example.com/api/shares/auto123abc/files?id=file1&name=test.txt&chunkIndex=0&totalChunks=1" \
+  "https://files.example.com/api/shares/auto123abc/files?id=11111111-1111-4111-8111-111111111111&name=test.txt&chunkIndex=0&totalChunks=1" \
   -H "Content-Type: application/octet-stream" \
   --data-binary @test.txt
 ```
@@ -344,6 +342,131 @@ GET /api/shares/<shareId>/from-owner
 
 Use this when the authenticated owner needs a direct owner-only view of the share.
 
+The response includes the current file list with each file's `id` and `name`. You need those `id` values to delete individual files.
+
+Example:
+
+```bash
+curl -b cookies.txt "https://files.example.com/api/shares/auto123abc/from-owner"
+```
+
+### Modify files in an existing share
+
+The web UI action **Add / remove files** maps to a multi-step API flow. A completed share is locked for uploads. To change files, first read the current file IDs, then reopen the share, change the files, and complete it again.
+
+**Flow:**
+
+1. List current files while the share is still completed
+2. Reopen the share for editing
+3. Delete unwanted files
+4. Upload new files
+5. Complete the share again
+6. Optionally verify the final owner view again
+
+This mirrors the UI workflow.
+
+#### 1. List files to get file IDs
+
+Endpoint:
+
+```text
+GET /api/shares/<shareId>/from-owner
+```
+
+Use the `files` array from the response. Each entry has an `id` (internal file ID) and `name` (original filename).
+
+You should do this while the share is still completed. In Pingvin Share 1.13.0, owner/public share read endpoints may return `404` while a share is reopened and therefore incomplete.
+
+Example:
+
+```bash
+curl -b cookies.txt "https://files.example.com/api/shares/auto123abc/from-owner"
+```
+
+#### 2. Reopen the share
+
+Endpoint:
+
+```text
+DELETE /api/shares/<shareId>/complete
+```
+
+This sets `uploadLocked` back to `false` and allows the owner to add or remove files again.
+
+```bash
+curl -b cookies.txt -X DELETE \
+  "https://files.example.com/api/shares/auto123abc/complete"
+```
+
+While the share is reopened:
+
+- the public share link may still exist, but the share is treated as incomplete again
+- owner/public share read endpoints may return `404` until the share is completed again
+- recipients should not rely on the share until you call `complete` again
+
+#### 3. Delete individual files
+
+Endpoint:
+
+```text
+DELETE /api/shares/<shareId>/files/<fileId>
+```
+
+Requires authentication as the share owner or admin.
+
+```bash
+curl -b cookies.txt -X DELETE \
+  "https://files.example.com/api/shares/auto123abc/files/11111111-1111-4111-8111-111111111111"
+```
+
+Repeat for each file you want to remove.
+
+#### 4. Upload new files
+
+Use the same upload endpoint as during initial share creation:
+
+```text
+POST /api/shares/<shareId>/files?id=<fileId>&name=<fileName>&chunkIndex=<n>&totalChunks=<m>
+```
+
+Generate a new UUID for each new file. Chunking rules are the same as in section **3. Upload files**.
+
+```bash
+curl -b cookies.txt -X POST \
+  "https://files.example.com/api/shares/auto123abc/files?id=22222222-2222-4222-8222-222222222222&name=extra.pdf&chunkIndex=0&totalChunks=1" \
+  -H "Content-Type: application/octet-stream" \
+  --data-binary @extra.pdf
+```
+
+#### 5. Complete the share again
+
+Endpoint:
+
+```text
+POST /api/shares/<shareId>/complete
+```
+
+```bash
+curl -b cookies.txt -X POST \
+  "https://files.example.com/api/shares/auto123abc/complete"
+```
+
+After completion:
+
+- uploads are locked again
+- owner/public share read endpoints work again
+- multi-file shares may regenerate the ZIP archive in the background
+
+**Automation notes:**
+
+- You cannot add or remove files on a completed share without `DELETE .../complete` first.
+- Read existing file IDs before reopening the share.
+- File IDs are internal UUIDs. Use `GET /api/shares/<shareId>/from-owner` to read existing file IDs before deleting files.
+- Metadata changes (name, description, expiration, password) use `PATCH /api/shares/<shareId>` and do not require reopening the share.
+- There is no single "replace all files" endpoint; implement delete + upload explicitly.
+- When replacing all files, upload at least one replacement file before deleting the last existing file. This avoids a temporary empty-share state during automation.
+- If a share must stay publicly stable while you edit, plan a maintenance window or create a new share instead.
+
 ### Update a share
 
 Endpoint:
@@ -414,18 +537,6 @@ DELETE /api/shares/<shareId>
 
 This removes the share and its files.
 
-### Reopen a completed share
-
-Endpoint:
-
-```text
-DELETE /api/shares/<shareId>/complete
-```
-
-This reverts the completion state and unlocks the share for further upload changes.
-
-Use carefully in automation because recipients may already have received the original share link.
-
 
 ## Download endpoints
 
@@ -450,7 +561,7 @@ curl -c share-cookies.txt -X POST "https://files.example.com/api/shares/auto123a
   -d '{}'
 
 curl -b share-cookies.txt \
-  "https://files.example.com/api/shares/auto123abc/files/file1" \
+  "https://files.example.com/api/shares/auto123abc/files/11111111-1111-4111-8111-111111111111" \
   -o test.txt
 ```
 
