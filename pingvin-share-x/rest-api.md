@@ -243,6 +243,8 @@ Successful completion returns HTTP `202`.
 
 When recipients are configured, Pingvin triggers notification emails during the complete step. A successful HTTP `202` confirms that the share was completed and the notification flow was triggered, but final mailbox delivery should be verified separately if required.
 
+For password-protected shares, recipient notification emails contain the share link but not the share password. Share passwords must be communicated separately through another secure channel.
+
 ### 5. Use the resulting link
 
 Typical public share link:
@@ -455,6 +457,7 @@ After completion:
 
 - uploads are locked again
 - owner/public share read endpoints work again
+- file changes on an existing share should not be relied on as a recipient notification mechanism
 - multi-file shares may regenerate the ZIP archive in the background
 
 **Automation notes:**
@@ -465,6 +468,7 @@ After completion:
 - Metadata changes (name, description, expiration, password) use `PATCH /api/shares/<shareId>` and do not require reopening the share.
 - There is no single "replace all files" endpoint; implement delete + upload explicitly.
 - When replacing all files, upload at least one replacement file before deleting the last existing file. This avoids a temporary empty-share state during automation.
+- If recipients must receive a new notification email for an updated file set, consider deleting and recreating the share with the same `id` instead of modifying files in-place.
 - If a share must stay publicly stable while you edit, plan a maintenance window or create a new share instead.
 
 ### Update a share
@@ -583,17 +587,65 @@ GET /api/shares/isShareIdAvailable/<shareId>
 
 Use this before creating a share if your automation wants predictable IDs and a clean retry strategy.
 
+## Security considerations
+
+- Share URLs contain the share ID. If your automation chooses share IDs, use unique and non-guessable values.
+- Do not use sequential IDs, customer names, invoice numbers, ticket numbers, or other predictable identifiers as the full share ID.
+- Use a dedicated automation/API account where possible.
+- Treat authentication cookies, refresh tokens, share token cookies, and share passwords as secrets.
+- Do not write passwords, authentication cookies, or share token cookies to application logs.
+- Use HTTPS for all API calls.
+- If a share contains sensitive data, use password protection and communicate the password via a separate secure channel.
+- Recipient notification emails contain the share link, but not the share password.
+- Prefer the shortest practical expiration time for sensitive shares.
+- Consider `maxViews` for sensitive shares, but remember that requesting a share token increments the view counter.
+- Reusing the same share ID after deleting and recreating a share keeps the public URL stable, but it also means the URL remains known to previous recipients. Use this pattern intentionally.
+- Delete shares that are no longer needed.
+
 ## Practical recommendations for automation
 
 ### Generate unique share IDs
 
-Use a stable prefix plus random suffix, for example:
+The share ID becomes part of the public share URL:
 
 ```text
-auto-20260630-8f3c2a
+https://files.example.com/s/<shareId>
 ```
 
-This reduces collisions and makes support/debugging easier.
+Because of that, share IDs must be unique and not easily guessable.
+
+Recommended pattern:
+
+```text
+auto-20260630-8f3c2a91b7
+```
+
+Use a stable prefix for support/debugging plus a sufficiently random suffix.
+
+Avoid predictable IDs such as:
+
+```text
+invoice-1001
+invoice-1002
+customer-a
+kunde-mueller
+```
+
+Predictable IDs can make share URLs easier to enumerate or guess.
+
+If your automation needs a stable public URL, you can intentionally reuse the same share ID after deleting the old share first. For example:
+
+1. delete the old share
+2. check that the share ID is available again
+3. create a new share with the same `id`
+4. upload files
+5. complete the new share
+
+This creates a new share under the same public URL.
+
+This can be useful when recipients should receive a new notification email for an updated file set while keeping the same link.
+
+Be aware that deleting and recreating a share resets the share state. Existing share tokens, files, view counters, password settings, and metadata from the old share do not carry over automatically.
 
 ### Keep uploads idempotent where possible
 
