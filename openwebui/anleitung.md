@@ -35,6 +35,8 @@ Welche Modelle und Funktionen bei Ihnen freigeschaltet sind, legt Ihr Unternehme
 
 **Die Schalter am Eingabefeld:** Über das Symbol mit den vier Punkten neben dem **+** schalten Sie Zusatzfunktionen für den aktuellen Chat ein und aus: **Websuche**, **Bild** (Bildgenerierung) und **Code-Interpreter**. Das Wolken-Symbol daneben öffnet das **Terminal**.
 
+> **Wichtig, einmal am Anfang:** Klicken Sie auf das Wolken-Symbol und wählen Sie **Open Terminal** aus. Nur dann kann die KI Dateien für Sie erstellen (Excel, Word, CSV …). Ihr Browser merkt sich die Auswahl für alle neuen Chats. Auf einem anderen Gerät, in einem anderen Browser oder im privaten Fenster müssen Sie es erneut auswählen.
+
 ![Schalter am Eingabefeld: Websuche, Bild, Code-Interpreter](images/schalter-eingabefeld.png)
 
 **Unterschied zu ChatGPT:** Sie können zwischen Modellen verschiedener Anbieter wählen (z. B. OpenAI, Google, Anthropic), und Ihre Daten liegen auf einer Plattform, die HXS für Ihr Unternehmen betreibt.
@@ -52,6 +54,31 @@ Das Modell wählen Sie **rechts im Eingabefeld** (dort steht der Name des aktuel
 ![Modellauswahl im Eingabefeld](images/modellauswahl.png)
 
 Die kurze Beschreibung beim Modell (Info-Symbol) hilft bei der Auswahl. Starten Sie mit dem voreingestellten Modell und wechseln Sie nur, wenn das Ergebnis nicht passt. Sie können das Modell auch mitten im Chat wechseln.
+
+### Was eine Anfrage kostet
+
+Die Anbieter rechnen nach **Tokens** ab. Ein Token ist ein Wortteil; eine Seite Text sind grob 500 bis 800 Tokens. Bezahlt wird für alles, was an das Modell geht (Ihre Frage, der bisherige Chatverlauf, angehängte Dateien, Suchergebnisse aus dem Web), und für alles, was zurückkommt (die Antwort, bei "denkenden" Modellen auch das Nachdenken). Antworten sind pro Token deutlich teurer als Eingaben.
+
+Je nach Modell liegen die Preise sehr weit auseinander. Beispiele (Listenpreise der Anbieter in US-Dollar pro **1 Million Tokens**, Stand November 2026, ohne Gewähr):
+
+| Modell | Eingabe | Antwort |
+|---|---|---|
+| Claude Haiku 5.5 | 0,10 $ | 0,50 $ |
+| Gemini 3.8 Flash | 0,75 $ | 3,75 $ |
+| GPT-6.1 Terra | 1,00 $ | 5,00 $ |
+| Claude Sonnet 5.5 | 2,00 $ | 10,00 $ |
+| GPT-6.1 Sol | 2,00 $ | 10,00 $ |
+| Gemini 3.1 Pro | 2,00 $ | 12,00 $ |
+| Claude Opus 5.5 | 4,00 $ | 20,00 $ |
+
+Eine Antwort von Claude Opus kostet also rund das 40-Fache derselben Antwort von Claude Haiku. Aktuelle Preise: [Anthropic](https://www.anthropic.com/pricing), [OpenAI](https://openai.com/api/pricing/), [Google](https://ai.google.dev/gemini-api/docs/pricing).
+
+So halten Sie die Kosten niedrig:
+
+- Für Alltägliches die schnellen Modelle verwenden, die großen nur für schwierige Aufgaben.
+- Für ein neues Thema einen **neuen Chat** beginnen. In einem langen Chat wird bei jeder Frage der ganze bisherige Verlauf erneut mitgeschickt.
+- Nur die Dateien anhängen, die für die Frage nötig sind.
+- Websuche ausschalten, wenn Sie keine aktuellen Informationen brauchen.
 
 ## 3. Im Web suchen
 
@@ -145,11 +172,12 @@ Tipps: Inhalt und Gliederung zuerst im Chat abstimmen, dann die Präsentation er
 |---|---|---|
 | Was | Python direkt in Ihrem Browser | Eigene Linux-Umgebung pro Person auf dem Server |
 | Gut für | Berechnungen, Auswertungen, Diagramme im Chat | Dateien erzeugen (Excel, Word, CSV …), größere Skripte, mehrere Dateien |
-| Dateien herunterladen | Nein, Ergebnisse erscheinen nur im Chat | Ja, über das Seitenfenster **Dateien** |
-| Einschalten | Schalter **Code-Interpreter** am Eingabefeld | Wolken-Symbol am Eingabefeld → **Open Terminal** |
+| Dateien herunterladen | Nein, Ergebnisse erscheinen nur im Chat | Ja, die Datei erscheint im Chat mit Download-Schaltfläche |
+| Einschalten | Schalter **Code-Interpreter** am Eingabefeld | Wolken-Symbol am Eingabefeld → **Open Terminal** (bleibt im Browser für neue Chats ausgewählt) |
 
 - Das Modell schreibt den Code, führt ihn aus und erklärt das Ergebnis.
-- **Für Dateien zum Herunterladen das Terminal verwenden.** Rechts öffnet sich das Seitenfenster mit Ihren Dateien, inklusive Vorschau. Von dort laden Sie die Datei herunter.
+- **Für Dateien zum Herunterladen das Terminal verwenden.** Ist es nicht ausgewählt, kann die KI keine Datei erzeugen (siehe Abschnitt 1).
+- Die fertige Datei zeigt die KI direkt im Chat an, mit Vorschau und Download-Schaltfläche. Alle Ihre Dateien finden Sie außerdem im Seitenfenster **Dateien** des Terminals.
 - Im Terminal bleiben Ihre Dateien erhalten; andere Personen sehen sie nicht.
 - Für Programmier- und Rechenaufgaben die starken Modelle wählen (siehe Abschnitt 2). Schnelle Modelle weichen eher aus und liefern nur Code zum Selbst-Ausführen.
 
@@ -199,6 +227,9 @@ Ihr Unternehmen schaltet Modelle und Funktionen frei. Wenden Sie sich an Ihre IT
 
 **Die Antwort ist abgeschnitten oder bricht ab.**
 "Weiter" schreiben, oder die Antwort mit dem Pfeil-Symbol neu erzeugen lassen. Bei sehr langen Chats hilft ein neuer Chat.
+
+**Die KI sagt, sie habe eine Datei erstellt, aber ich kann sie nicht herunterladen.**
+Prüfen Sie, ob das Terminal ausgewählt ist (Wolken-Symbol am Eingabefeld → **Open Terminal**), und lassen Sie die Datei neu erstellen. Wenn die Datei nur als Text oder Link ohne Download erscheint: "Zeig mir die Datei an" schreiben.
 
 **Das Modell kennt aktuelle Ereignisse nicht.**
 Websuche einschalten bzw. "Recherchiere im Web …" schreiben.
