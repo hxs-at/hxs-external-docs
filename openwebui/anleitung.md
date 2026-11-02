@@ -33,15 +33,21 @@ Welche Modelle und Funktionen bei Ihnen freigeschaltet sind, legt Ihr Unternehme
 - Links finden Sie Ihre bisherigen Chats. Jeder Chat bekommt automatisch einen Titel.
 - Sprache der Oberfläche ändern: links unten auf Ihren Namen → **Einstellungen → Allgemein → Sprache**.
 
-**Die Schalter am Eingabefeld:** Über das Symbol mit den vier Punkten neben dem **+** schalten Sie Zusatzfunktionen für den aktuellen Chat ein und aus: **Websuche**, **Bild** (Bildgenerierung) und **Code-Interpreter**. Das Wolken-Symbol daneben öffnet das **Terminal**.
+### Zusatzfunktionen am Eingabefeld
 
-> **Wichtig, einmal am Anfang:** Klicken Sie auf das Wolken-Symbol und wählen Sie **Open Terminal** aus. Nur dann kann die KI Dateien für Sie erstellen (Excel, Word, CSV …). Ihr Browser merkt sich die Auswahl für alle neuen Chats. Auf einem anderen Gerät, in einem anderen Browser oder im privaten Fenster müssen Sie es erneut auswählen.
-
-![Terminal auswählen: Wolken-Symbol am Eingabefeld, darunter das Terminal (der Name kann bei Ihnen abweichen)](images/terminal-auswahl.png)
+Über das Symbol mit den vier Punkten neben dem **+** schalten Sie Zusatzfunktionen für den aktuellen Chat ein und aus: **Websuche**, **Bild** (Bildgenerierung) und **Code-Interpreter**.
 
 ![Schalter am Eingabefeld: Websuche, Bild, Code-Interpreter](images/schalter-eingabefeld.png)
 
-**Unterschied zu ChatGPT:** Sie können zwischen Modellen verschiedener Anbieter wählen (z. B. OpenAI, Google, Anthropic), und Ihre Daten liegen auf einer Plattform, die HXS für Ihr Unternehmen betreibt.
+### Terminal einmal auswählen (wichtig für Dateien)
+
+Damit die KI Dateien für Sie erstellen kann (Excel, Word, CSV …), braucht sie das **Terminal**. Klicken Sie einmal auf das **Wolken-Symbol** am Eingabefeld und wählen Sie das Terminal aus (bei Ihnen heißt es z. B. *Open Terminal*). Ihr Browser merkt sich die Auswahl für alle neuen Chats. Auf einem anderen Gerät, in einem anderen Browser oder im privaten Fenster wählen Sie es erneut aus.
+
+![Terminal auswählen: Wolken-Symbol am Eingabefeld, darunter das Terminal (der Name kann bei Ihnen abweichen)](images/terminal-auswahl.png)
+
+### Unterschied zu ChatGPT
+
+Sie können zwischen Modellen verschiedener Anbieter wählen (z. B. OpenAI, Google, Anthropic). Ihre Chats, Dateien und Einstellungen speichert die Plattform, die HXS für Ihr Unternehmen betreibt. Für die Antwort wird Ihre Anfrage aber an den Anbieter des gewählten Modells übermittelt (mehr dazu in Abschnitt 15).
 
 ## 2. Das richtige Modell wählen
 
