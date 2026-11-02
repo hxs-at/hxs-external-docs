@@ -37,6 +37,8 @@ Welche Modelle und Funktionen bei Ihnen freigeschaltet sind, legt Ihr Unternehme
 
 > **Wichtig, einmal am Anfang:** Klicken Sie auf das Wolken-Symbol und wählen Sie **Open Terminal** aus. Nur dann kann die KI Dateien für Sie erstellen (Excel, Word, CSV …). Ihr Browser merkt sich die Auswahl für alle neuen Chats. Auf einem anderen Gerät, in einem anderen Browser oder im privaten Fenster müssen Sie es erneut auswählen.
 
+![Terminal auswählen: Wolken-Symbol am Eingabefeld, darunter das Terminal (der Name kann bei Ihnen abweichen)](images/terminal-auswahl.png)
+
 ![Schalter am Eingabefeld: Websuche, Bild, Code-Interpreter](images/schalter-eingabefeld.png)
 
 **Unterschied zu ChatGPT:** Sie können zwischen Modellen verschiedener Anbieter wählen (z. B. OpenAI, Google, Anthropic), und Ihre Daten liegen auf einer Plattform, die HXS für Ihr Unternehmen betreibt.
