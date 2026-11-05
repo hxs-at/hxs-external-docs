@@ -1,0 +1,16 @@
+# Dependabot version updates. Security updates for vulnerable dependencies
+# come from the organization setting; they use the assignees below too.
+# Blocks per repository type: docs/repo-types.md in hxs-repo-template.
+version: 2
+updates:
+  # Pinned actions in .github/workflows (one PR per month).
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    cooldown:
+      default-days: 14
+    assignees: [hxs-sma]
+    groups:
+      github_actions:
+        patterns: ["*"]
