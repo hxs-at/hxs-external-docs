@@ -43,7 +43,7 @@ Welche Modelle und Funktionen bei Ihnen freigeschaltet sind, legt Ihr Unternehme
 
 **Dateien & Werkzeuge** ist Ihr persönlicher Ordner auf dem Server, in dem die KI arbeitet: Sie kann dort Dateien erstellen und bearbeiten (Excel, Word, CSV …), Programme ausführen und Ihnen das Ergebnis zum Herunterladen geben. Andere Personen sehen Ihre Dateien nicht.
 
-Bei den Modellen ist **Dateien & Werkzeuge** schon eingeschaltet, Sie müssen nichts tun. Am **Wolken-Symbol** am Eingabefeld sehen Sie, ob es aktiv ist; dort schalten Sie es für einen Chat auch aus oder wieder ein.
+In der Regel ist **Dateien & Werkzeuge** bei den Modellen schon eingeschaltet. Am **Wolken-Symbol** am Eingabefeld sehen Sie, ob es aktiv ist. Steht dort nicht *Dateien & Werkzeuge*, klicken Sie auf das Wolken-Symbol und wählen es aus; dort schalten Sie es für einen Chat auch wieder aus.
 
 ![Dateien & Werkzeuge: Wolken-Symbol am Eingabefeld](images/terminal-auswahl.png)
 
@@ -183,14 +183,14 @@ Tipps: Inhalt und Gliederung zuerst im Chat abstimmen, dann die Präsentation er
 **Dateien & Werkzeuge** ist eine eigene Linux-Umgebung pro Person auf dem Server. Dort erzeugt und bearbeitet die KI Dateien (Excel, Word, CSV …), rechnet Auswertungen, zeichnet Diagramme und führt auch größere Skripte aus.
 
 - Das Modell schreibt den Code, führt ihn aus und erklärt das Ergebnis.
-- **Dateien & Werkzeuge ist bei den Modellen schon eingeschaltet.** Ist es ausgeschaltet, kann die KI keine Datei erzeugen (siehe Abschnitt 1).
+- **Für Dateien zum Herunterladen muss Dateien & Werkzeuge eingeschaltet sein** (meist ist es das schon, siehe Abschnitt 1). Ist es ausgeschaltet, kann die KI keine Datei erzeugen.
 - Die fertige Datei zeigt die KI direkt im Chat an, mit Vorschau und Download-Schaltfläche. Alle Ihre Dateien finden Sie außerdem im Seitenfenster **Dateien**.
 - Ihre Dateien bleiben in Ihrem Ordner erhalten; andere Personen sehen sie nicht.
 - Für Programmier- und Rechenaufgaben die starken Modelle wählen (siehe Abschnitt 2). Schnelle Modelle weichen eher aus und liefern nur Code zum Selbst-Ausführen.
 
 > Beispiel (Dateien & Werkzeuge): *Erstelle mit Python eine Excel-Datei mit Beispiel-Umsätzen für 12 Monate und 3 Produkte inklusive Diagramm und gib mir die Datei zum Download.*
 
-![Dateien & Werkzeuge: erzeugte Excel-Datei mit Vorschau im Seitenfenster](images/terminal-excel.png)
+![Dateien & Werkzeuge: erzeugte Excel-Datei mit Vorschau und Download im Chat](images/terminal-excel.png)
 
 ## 12. Sprache: diktieren und vorlesen
 
