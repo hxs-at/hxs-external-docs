@@ -16,7 +16,7 @@ Welche Modelle und Funktionen bei Ihnen freigeschaltet sind, legt Ihr Unternehme
 8. [PowerPoint-Präsentationen](#8-powerpoint-präsentationen)
 9. [Word-Dokumente und E-Mails](#9-word-dokumente-und-e-mails)
 10. [Diagramme und Auswertungen](#10-diagramme-und-auswertungen)
-11. [Programmieren: Code-Interpreter und Terminal](#11-programmieren-code-interpreter-und-terminal)
+11. [Programmieren und Dateien erzeugen: Dateien & Werkzeuge](#11-programmieren-und-dateien-erzeugen-dateien--werkzeuge)
 12. [Sprache: diktieren und vorlesen](#12-sprache-diktieren-und-vorlesen)
 13. [Weitere Funktionen](#13-weitere-funktionen)
 14. [Gute Prompts schreiben](#14-gute-prompts-schreiben)
@@ -35,15 +35,17 @@ Welche Modelle und Funktionen bei Ihnen freigeschaltet sind, legt Ihr Unternehme
 
 ### Zusatzfunktionen am Eingabefeld
 
-Über das Symbol mit den vier Punkten neben dem **+** schalten Sie Zusatzfunktionen für den aktuellen Chat ein und aus: **Websuche**, **Bild** (Bildgenerierung) und **Code-Interpreter**.
+Über das Symbol mit den vier Punkten neben dem **+** schalten Sie Zusatzfunktionen für den aktuellen Chat ein und aus: **Websuche** und **Bild** (Bildgenerierung).
 
-![Schalter am Eingabefeld: Websuche, Bild, Code-Interpreter](images/schalter-eingabefeld.png)
+![Schalter am Eingabefeld: Websuche, Bild](images/schalter-eingabefeld.png)
 
-### Terminal einmal auswählen (wichtig für Dateien)
+### Dateien & Werkzeuge (wichtig für Dateien)
 
-Damit die KI Dateien für Sie erstellen kann (Excel, Word, CSV …), braucht sie das **Terminal**. Klicken Sie einmal auf das **Wolken-Symbol** am Eingabefeld und wählen Sie das Terminal aus (bei Ihnen heißt es z. B. *Open Terminal*). Ihr Browser merkt sich die Auswahl für alle neuen Chats. Auf einem anderen Gerät, in einem anderen Browser oder im privaten Fenster wählen Sie es erneut aus.
+**Dateien & Werkzeuge** ist Ihr persönlicher Ordner auf dem Server, in dem die KI arbeitet: Sie kann dort Dateien erstellen und bearbeiten (Excel, Word, CSV …), Programme ausführen und Ihnen das Ergebnis zum Herunterladen geben. Andere Personen sehen Ihre Dateien nicht.
 
-![Terminal auswählen: Wolken-Symbol am Eingabefeld, darunter das Terminal (der Name kann bei Ihnen abweichen)](images/terminal-auswahl.png)
+In der Regel ist **Dateien & Werkzeuge** bei den Modellen schon eingeschaltet. Am **Wolken-Symbol** am Eingabefeld sehen Sie, ob es aktiv ist. Steht dort nicht *Dateien & Werkzeuge*, klicken Sie auf das Wolken-Symbol und wählen es aus; dort schalten Sie es für einen Chat auch wieder aus.
+
+![Dateien & Werkzeuge: Wolken-Symbol am Eingabefeld](images/terminal-auswahl.png)
 
 ### Unterschied zu ChatGPT
 
@@ -101,9 +103,11 @@ Die Websuche ist bei den meisten Modellen bereits eingeschaltet. Das Modell such
 
 Ziehen Sie eine Datei ins Chatfenster oder hängen Sie sie über das **Plus-Symbol** an. Geeignet sind z. B. PDF, Word, Excel, PowerPoint, Text und Bilder.
 
-- Das Modell liest die Datei bei Bedarf selbst und nennt in der Antwort den **Dateinamen als Quelle**.
+- Das Modell liest die Datei bei Bedarf selbst, auch lange Dokumente vollständig, und nennt in der Antwort den **Dateinamen als Quelle**.
 - Mehrere Dateien gleichzeitig sind möglich (Ihr Unternehmen kann Größe und Anzahl begrenzen).
 - Bilder und Screenshots kann das Modell "sehen": z. B. eine Fehlermeldung, ein Diagramm oder eine handschriftliche Notiz.
+- Auch eingescannte PDFs (Papierseiten ohne Text darin) kann das Modell lesen: Die Plattform erkennt den Text automatisch.
+- Soll die KI eine Datei ändern (z. B. eine Spalte in Ihrer Excel-Datei ergänzen), legt sie eine Kopie in **Dateien & Werkzeuge** an (Abschnitt 1), bearbeitet sie dort und gibt Ihnen die geänderte Fassung zum Herunterladen.
 
 > Beispiel: *Fasse den angehängten Vertrag in 10 Punkten zusammen und markiere alle Fristen.*
 
@@ -170,28 +174,23 @@ Tipps: Inhalt und Gliederung zuerst im Chat abstimmen, dann die Präsentation er
 
 ![Mermaid-Diagramm im Chat](images/mermaid-diagramm.png)
 
-**Diagramme aus Zahlen (Balken, Linien, Torten):** Schalter **Code-Interpreter** einschalten, Daten einfügen oder Excel-Datei anhängen und um eine Auswertung mit Diagramm bitten. Das Modell rechnet in Python und zeigt das Diagramm als Bild im Chat.
+**Diagramme aus Zahlen (Balken, Linien, Torten):** Daten einfügen oder Excel-Datei anhängen und um eine Auswertung mit Diagramm bitten. Mit **Dateien & Werkzeuge** rechnet das Modell in Python und gibt Ihnen das Diagramm als Bild oder in einer Excel-Datei zum Herunterladen.
 
 > Beispiel: *Werte die angehängte Excel-Tabelle aus: Umsatz pro Monat als Liniendiagramm und die drei stärksten Produkte als Balkendiagramm.*
 
-## 11. Programmieren: Code-Interpreter und Terminal
+## 11. Programmieren und Dateien erzeugen: Dateien & Werkzeuge
 
-| | Code-Interpreter | Terminal (Open Terminal) |
-|---|---|---|
-| Was | Python direkt in Ihrem Browser | Eigene Linux-Umgebung pro Person auf dem Server |
-| Gut für | Berechnungen, Auswertungen, Diagramme im Chat | Dateien erzeugen (Excel, Word, CSV …), größere Skripte, mehrere Dateien |
-| Dateien herunterladen | Nein, Ergebnisse erscheinen nur im Chat | Ja, die Datei erscheint im Chat mit Download-Schaltfläche |
-| Einschalten | Schalter **Code-Interpreter** am Eingabefeld | Wolken-Symbol am Eingabefeld → **Open Terminal** (bleibt im Browser für neue Chats ausgewählt) |
+**Dateien & Werkzeuge** ist eine eigene Linux-Umgebung pro Person auf dem Server. Dort erzeugt und bearbeitet die KI Dateien (Excel, Word, CSV …), rechnet Auswertungen, zeichnet Diagramme und führt auch größere Skripte aus.
 
 - Das Modell schreibt den Code, führt ihn aus und erklärt das Ergebnis.
-- **Für Dateien zum Herunterladen das Terminal verwenden.** Ist es nicht ausgewählt, kann die KI keine Datei erzeugen (siehe Abschnitt 1).
-- Die fertige Datei zeigt die KI direkt im Chat an, mit Vorschau und Download-Schaltfläche. Alle Ihre Dateien finden Sie außerdem im Seitenfenster **Dateien** des Terminals.
-- Im Terminal bleiben Ihre Dateien erhalten; andere Personen sehen sie nicht.
+- **Für Dateien zum Herunterladen muss Dateien & Werkzeuge eingeschaltet sein** (meist ist es das schon, siehe Abschnitt 1). Ist es ausgeschaltet, kann die KI keine Datei erzeugen.
+- Die fertige Datei zeigt die KI direkt im Chat an, mit Vorschau und Download-Schaltfläche. Alle Ihre Dateien finden Sie außerdem im Seitenfenster **Dateien**.
+- Ihre Dateien bleiben in Ihrem Ordner erhalten; andere Personen sehen sie nicht.
 - Für Programmier- und Rechenaufgaben die starken Modelle wählen (siehe Abschnitt 2). Schnelle Modelle weichen eher aus und liefern nur Code zum Selbst-Ausführen.
 
-> Beispiel (Terminal): *Erstelle im Terminal mit Python eine Excel-Datei mit Beispiel-Umsätzen für 12 Monate und 3 Produkte inklusive Diagramm und gib mir die Datei zum Download.*
+> Beispiel (Dateien & Werkzeuge): *Erstelle mit Python eine Excel-Datei mit Beispiel-Umsätzen für 12 Monate und 3 Produkte inklusive Diagramm und gib mir die Datei zum Download.*
 
-![Terminal: erzeugte Excel-Datei mit Vorschau im Seitenfenster](images/terminal-excel.png)
+![Dateien & Werkzeuge: erzeugte Excel-Datei mit Vorschau und Download im Chat](images/terminal-excel.png)
 
 ## 12. Sprache: diktieren und vorlesen
 
@@ -237,8 +236,7 @@ Ihr Unternehmen schaltet Modelle und Funktionen frei. Wenden Sie sich an Ihre IT
 "Weiter" schreiben, oder die Antwort mit dem Pfeil-Symbol neu erzeugen lassen. Bei sehr langen Chats hilft ein neuer Chat.
 
 **Die KI sagt, sie habe eine Datei erstellt, aber ich kann sie nicht herunterladen.**
-Prüfen Sie, ob das Terminal ausgewählt ist (Wolken-Symbol am Eingabefeld → **Open Terminal**), und lassen Sie die Datei neu erstellen. Wenn die Datei nur als Text oder Link ohne Download erscheint: "Zeig mir die Datei an" schreiben.
-
+Prüfen Sie am Wolken-Symbol, ob **Dateien & Werkzeuge** eingeschaltet ist, und lassen Sie die Datei neu erstellen. Wenn die Datei nur als Text oder Link ohne Download erscheint: "Zeig mir die Datei an" schreiben.
 **Das Modell kennt aktuelle Ereignisse nicht.**
 Websuche einschalten bzw. "Recherchiere im Web …" schreiben.
 
