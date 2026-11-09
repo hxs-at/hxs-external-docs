@@ -111,6 +111,21 @@ Ziehen Sie eine Datei ins Chatfenster oder hängen Sie sie über das **Plus-Symb
 
 > Beispiel: *Fasse den angehängten Vertrag in 10 Punkten zusammen und markiere alle Fristen.*
 
+### Dateien aus OneDrive und SharePoint
+
+Wenn Ihr Unternehmen das freigeschaltet hat, holen Sie Dateien direkt aus OneDrive oder SharePoint in den Chat, ohne sie vorher herunterzuladen.
+
+1. Im Chat auf das **Plus-Symbol** klicken und **Microsoft OneDrive (work/school)** wählen.
+2. Es öffnet sich ein eigenes Fenster (Pop-up) mit Ihrem OneDrive und den SharePoint-Seiten. Beim ersten Mal melden Sie sich dort mit Ihrem Firmenkonto an, falls Sie gefragt werden.
+3. Datei auswählen und bestätigen. Sie erscheint im Chat wie eine angehängte Datei.
+
+Gut zu wissen:
+
+- Sie sehen nur Dateien, die Sie auch in OneDrive bzw. SharePoint öffnen dürfen.
+- Die Datei wird als **Kopie** in den Chat übernommen. Ändert jemand die Datei später in SharePoint, bekommt der Chat das nicht mit: für den neuen Stand die Datei erneut auswählen.
+- Öffnet sich kein Fenster, blockiert der Browser das Pop-up. Im Edge erscheint dann rechts in der Adressleiste ein Symbol: darauf klicken, **Pop-ups und Umleitungen immer zulassen** wählen und die Auswahl noch einmal öffnen (siehe Häufige Fragen).
+
+
 ## 5. Wissensdatenbanken
 
 Eine Wissensdatenbank ist eine Sammlung von Dokumenten, auf die das Modell immer wieder zugreifen kann, z. B. Handbücher, Richtlinien oder Produktunterlagen.
@@ -239,6 +254,9 @@ Ihr Unternehmen schaltet Modelle und Funktionen frei. Wenden Sie sich an Ihre IT
 Prüfen Sie am Wolken-Symbol, ob **Dateien & Werkzeuge** eingeschaltet ist, und lassen Sie die Datei neu erstellen. Wenn die Datei nur als Text oder Link ohne Download erscheint: "Zeig mir die Datei an" schreiben.
 **Das Modell kennt aktuelle Ereignisse nicht.**
 Websuche einschalten bzw. "Recherchiere im Web …" schreiben.
+
+**Beim Klick auf OneDrive passiert nichts.**
+Der Browser hat das Pop-up-Fenster blockiert. Im Edge (und in Chrome) zeigt ein Symbol rechts in der Adressleiste das an: darauf klicken, Pop-ups für die Adresse der Plattform immer zulassen und die Auswahl erneut öffnen.
 
 **Ich komme nicht mehr hinein.**
 Die Anmeldung läuft über Ihr Microsoft-Firmenkonto. Wenden Sie sich an Ihre IT, wenn die Anmeldung dort nicht klappt oder Sie keinen Zugriff auf die Plattform haben.
