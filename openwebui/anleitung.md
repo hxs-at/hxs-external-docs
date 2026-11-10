@@ -35,9 +35,14 @@ Welche Modelle und Funktionen bei Ihnen freigeschaltet sind, legt Ihr Unternehme
 
 ### Zusatzfunktionen am Eingabefeld
 
-Über das Symbol mit den vier Punkten neben dem **+** schalten Sie Zusatzfunktionen für den aktuellen Chat ein und aus: **Websuche** und **Bild** (Bildgenerierung).
+Über das **+** links im Eingabefeld erreichen Sie alles Weitere für den aktuellen Chat:
 
-![Schalter am Eingabefeld: Websuche, Bild](images/schalter-eingabefeld.png)
+- **Datei(en) hochladen** und **Aufnahme** (Foto mit der Kamera)
+- **Add Context**: Wissen, Notizen oder frühere Chats dazunehmen
+- **Werkzeuge**: die Zusatzwerkzeuge des Modells (z. B. PowerPoint, E-Mail); sie sind schon ausgewählt
+- **Websuche** und **Bild** (Bildgenerierung): Schalter für diesen Chat
+
+![Das Plus-Menü am Eingabefeld: Dateien, Werkzeuge, Websuche, Bild](images/schalter-eingabefeld.png)
 
 ### Dateien & Werkzeuge (wichtig für Dateien)
 
@@ -144,7 +149,7 @@ Eine Wissensdatenbank ist eine Sammlung von Dokumenten, auf die das Modell immer
 
 ## 7. Bilder erstellen und bearbeiten
 
-1. Am Eingabefeld den Schalter **Bild** einschalten. Ohne den Schalter beschreiben manche Modelle das Bild nur oder zeichnen eine einfache Grafik als Code.
+1. Über das **+** am Eingabefeld den Schalter **Bild** einschalten. Ohne den Schalter beschreiben manche Modelle das Bild nur oder zeichnen eine einfache Grafik als Code.
 2. Das gewünschte Bild möglichst genau beschreiben: Motiv, Stil, Farben, Format.
 - Bearbeiten: Bild anhängen und beschreiben, was geändert werden soll ("Hintergrund weiß", "Logo entfernen").
 
