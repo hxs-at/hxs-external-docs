@@ -4,6 +4,8 @@ Diese Anleitung erklärt die wichtigsten Funktionen der KI-Plattform, die HXS f�
 
 Welche Modelle und Funktionen bei Ihnen freigeschaltet sind, legt Ihr Unternehmen fest. Einzelne Punkte dieser Anleitung können daher bei Ihnen fehlen oder anders benannt sein.
 
+*English version: [User guide](guide.md).*
+
 ## Inhalt
 
 1. [Anmelden und loslegen](#1-anmelden-und-loslegen)
