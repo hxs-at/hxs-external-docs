@@ -1,0 +1,23 @@
+# Line endings: LF everywhere, in the repository and in every checkout (also
+# on Windows with core.autocrlf=true). Files that end up on Linux (containers,
+# Terraform, Lambda, SSM, user data) then never get CRLF, and hashes of files
+# are the same on every machine. Rule and reasons: docs/conventions.md,
+# "Line endings".
+* text=auto eol=lf
+
+# Windows-only scripts keep CRLF.
+*.ps1  text eol=crlf
+*.psm1 text eol=crlf
+*.psd1 text eol=crlf
+*.cmd  text eol=crlf
+*.bat  text eol=crlf
+
+# Binary files: never convert or diff as text.
+*.png  binary
+*.jpg  binary
+*.gif  binary
+*.ico  binary
+*.pdf  binary
+*.zip  binary
+*.xlsx binary
+*.docx binary
